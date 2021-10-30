@@ -15,13 +15,13 @@ public class TestData {
 		
 		Contacto[] listaContactos = agenda.getListContactos();
 		
-		Contacto contacto = new Contacto("Juan", "12345");
+		Contacto contacto = new Contacto("Juan", "12345",20);
 		listaContactos[0] = contacto;
 		
-		contacto = new Contacto("Pedro", "12345");
+		contacto = new Contacto("Pedro", "12345",20);
 		listaContactos[1] = contacto;
 		
-		contacto = new Contacto("Ana", "12345");
+		contacto = new Contacto("Ana", "12345",21);
 		listaContactos[2] = contacto;
 		
 		return agenda;

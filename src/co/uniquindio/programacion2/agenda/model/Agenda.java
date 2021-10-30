@@ -1,7 +1,6 @@
 package co.uniquindio.programacion2.agenda.model;
 
 import java.util.Arrays;
-import java.util.Iterator;
 
 import co.uniquindio.programacion2.agenda.exceptions.ContactoExcepction;
 
@@ -18,7 +17,7 @@ public class Agenda {
 	private int tamanioListContactos;
 	private int tamanioListGrupos;
 //	private int numContactos = 0;
-//	private int numGrupos = 0;
+	private int numGrupos = 0;
 	
 	/**
 	 * Metodo constructor vacio en el cual sus parametros se asignan por defecto
@@ -145,7 +144,7 @@ public class Agenda {
 	 * @param nombre
 	 * @param telefono
 	 */
-	public void crearContacto(String nombre, String telefono) throws ContactoExcepction {
+	public void crearContacto(String nombre, String telefono, int edad) throws ContactoExcepction {
 		Contacto contactoExistente = null;
 		int posicion = -1;
 		
@@ -160,7 +159,7 @@ public class Agenda {
 			if (posicion != -1) {
 				
 				//3. Crear el Contacto
-				Contacto contacto = new Contacto(nombre, telefono);
+				Contacto contacto = new Contacto(nombre, telefono, edad);
 				
 				//4. Agregarlo al arreglo (lista)
 				listContactos[posicion] = contacto;
@@ -198,7 +197,7 @@ public class Agenda {
 	 * @param telefono
 	 * @return
 	 */
-	private Contacto obtenerContacto(String telefono) {
+	public Contacto obtenerContacto(String telefono) {
 		
 		Contacto contacto = null;
 		
@@ -211,6 +210,122 @@ public class Agenda {
 			}
 		}
 		return contacto; 
+	}
+	
+	/**
+	 * Metodo eliminarContacto() 
+	 * @param telefono
+	 */
+	private void eliminarContacto(String telefono){
+		
+		Contacto contacto;
+		
+	    contacto = obtenerContacto(telefono);
+	    
+	    if(contacto != null){
+	    	
+	    	contacto = null;
+	    }
+		
+	}
+	
+	/**
+	 * Metodo ActualizarContacto()
+	 * @param telefono
+	 * @return
+	 */
+	private String ActualizarContacto(String telefono, String nombre){
+		
+		Contacto contacto = null;
+		String mensaje = " El contacto no se pudo actualizar";
+		
+		for(int i = 0; i < this.listContactos.length; i++){
+			
+			
+			if(existeContacto(telefono) == true){
+				contacto = listContactos[i];
+				contacto.setNombre(nombre);
+				mensaje = "El contacto fue actualizado";
+				
+			}
+		}
+		
+		return mensaje;
+		
+	}
+
+	/**
+	 * Metodo verificarAgendaLlena()
+	 * @return
+	 */
+	private boolean verificarAgendaLlena(){
+		
+		boolean agendaLlena = true;
+		
+		for(int i = 0; i<listContactos.length;i++){
+			
+			if(listContactos[i] == null){
+				agendaLlena = false;
+				break;
+			}
+		}
+		
+		return agendaLlena;
+	}
+	
+	/**
+	 * Metodo obtenerEspaciosDisponibles()
+	 * @return
+	 */
+	private int obtenerEspaciosDisponibles(){
+		
+		int contadorEspacios = 0;
+		
+		for(int i = 0; i<listContactos.length;i++){
+			
+			if(listContactos[i] == null){
+				contadorEspacios++;
+			}
+		}
+		
+		return contadorEspacios;
+	}
+	
+	private int ConctactosCreados() {
+		Contacto contacto = null;
+		int contarContacotos = 0;
+		
+		for (int i = 0; i < listContactos.length; i++) {
+			contacto = listContactos[i];
+			
+			if (contacto != null) {
+				contarContacotos++;
+			}
+		}
+		
+		return contarContacotos;
+	}
+
+	/**
+	 * Metodo existeContacto()
+	 * @param telefono
+	 * @return
+	 */
+	private boolean existeContacto(String telefono){
+		
+		boolean existeContacto = false;
+		
+		for(int i = 0; i< listContactos.length; i++){
+			
+			if(listContactos[i] != null){
+				if(listContactos[i].getTelefono().equals(telefono)){
+					existeContacto = true;
+					break;
+				}
+			}
+		}
+		
+		return existeContacto;
 	}
 
 	public void mostrarContactos() {
@@ -228,6 +343,106 @@ public class Agenda {
 		
 	}
 	
+	/**
+	 * Obtener los grupos que tengan un contacto donde su nombre inicie con vocal
+	 */
+	public void mostrarGruposDeContactoConVocal() {
+		
+		int contador = 0;
+		Grupo grupo = null;
+		
+		Grupo []listaGruposInicialContactoVocal = null;
+		
+		
+		contador = verificarCantidadGruposContactosIniciaVocal();
+		
+		listaGruposInicialContactoVocal = new Grupo[contador];
+		int j = 0;
+		
+		for (int i = 0; i < listGrupos.length; i++) {  //listGrupos => existencia de la relacion
+			
+			grupo = listGrupos[i];
+			
+			if (grupo != null) {
+				
+				if (grupo.verificarContactoIniciaVocal()) {
+					listaGruposInicialContactoVocal[j] = grupo;
+					j++;
+				}
+				
+			}
+		}
+		
+		imprimirArreglo(listaGruposInicialContactoVocal);
+
+	}
+	
+	private void imprimirArreglo(Grupo[] listaGruposInicialContactoVocal) {
+	
+		Grupo grupo = null;
+		for (int i = 0; i < listaGruposInicialContactoVocal.length; i++) {
+			grupo = listaGruposInicialContactoVocal[i];
+			if (grupo != null) {
+				System.out.println(grupo.getNombre());
+			}
+		}
+		
+	}
+
+	private int verificarCantidadGruposContactosIniciaVocal() {
+		
+		int contador = 0;
+		Grupo grupo = null;
+		
+		for (int i = 0; i < listGrupos.length; i++) {  //listGrupos => existencia de la relacion
+			
+			grupo = listGrupos[i];
+			
+			if (grupo != null) {
+				
+				if (grupo.verificarContactoIniciaVocal()) {
+					contador++;
+				}
+				
+			}
+		}
+		
+		return contador;
+		
+		
+	}
+
+	//Desviacion estandar edades contactos
+	public double desviacionEstandarEdadesContactos() {
+		
+		Contacto contacto = null;
+		double desviacion = 0;
+		double contadorEdades = 0;
+		double media = 0;
+		double contadorMedia = 0;
+		
+		for (int i = 0; i < listContactos.length; i++) {
+			contacto = listContactos[i];
+			
+			if (contacto != null) {
+				contadorEdades += listContactos[i].getEdad();
+			}
+		}
+
+			media = contadorEdades/ConctactosCreados();
+		
+		for (int i = 0; i < listContactos.length; i++) {
+			contacto = listContactos[i];
+			
+			if (contacto != null) {
+				contadorMedia += Math.pow(listContactos[i].getEdad() - media,2);
+			}
+		}
+		
+			desviacion = contadorMedia / ConctactosCreados();
+			return desviacion;
+	}
+	
 //	public void agregarContacto(Contacto c) {
 //		listContactos[numContactos++] = c;
 //	}
@@ -240,16 +455,16 @@ public class Agenda {
 //		}
 //	}
 //	
-//	public void agregarGrupo(Grupo g) {
-//		listGrupos[numGrupos++] = g;
-//	}
+	public void agregarGrupo(Grupo g) {
+		listGrupos[numGrupos++] = g;
+	}
 //	
-//	public void mostrarGrupo() {
-//		for (int i = 0; i < listGrupos.length; i++) {
-//			if (listGrupos[i]!=null) {
-//				System.out.println(listGrupos[i].toString());
-//			}
-//		}
-//	}
+	public void mostrarGrupo() {
+		for (int i = 0; i < listGrupos.length; i++) {
+			if (listGrupos[i]!=null) {
+				System.out.println(listGrupos[i].toString());
+			}
+		}
+	}
 
 }

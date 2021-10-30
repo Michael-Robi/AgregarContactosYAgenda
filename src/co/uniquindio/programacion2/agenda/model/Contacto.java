@@ -11,6 +11,7 @@ public class Contacto {
 	
 	// Declaracion de los atributos
 	private String nombre;
+	private int edad;
 	private String telefono;
 	
 	/**
@@ -19,6 +20,7 @@ public class Contacto {
 	 */
 	public Contacto(String nombre) {
 		this.nombre = nombre;
+		this.edad = 0;
 		this.telefono = "0000000000";
 	}
 	
@@ -27,8 +29,9 @@ public class Contacto {
 	 * @param nombre
 	 * @param telefono
 	 */
-	public Contacto(String nombre, String telefono) {
+	public Contacto(String nombre, String telefono, int edad) {
 		this.nombre = nombre;
+		this.edad = edad;
 		this.telefono = telefono;
 		
 		listGruposAsociados = new Grupo [3];
@@ -51,7 +54,7 @@ public class Contacto {
 	}
 
 	/**
-	 * Metodo para obtener el telÃ©fono
+	 * Metodo para obtener el teléfono
 	 * @return
 	 */
 	public String getTelefono() {
@@ -59,16 +62,48 @@ public class Contacto {
 	}
 
 	/**
-	 * Metodo para modificar el telÃ©fono
+	 * Metodo para modificar el teléfono
 	 * @param telefono
 	 */
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	
+	/**
+	 * Metodo edad
+	 * @return 
+	 */
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public Grupo[] getListGruposAsociados() {
+		return listGruposAsociados;
+	}
+
+	public void setListGruposAsociados(Grupo[] listGruposAsociados) {
+		this.listGruposAsociados = listGruposAsociados;
+	}
+
 	@Override
 	public String toString() {
-		return "Contacto [nombre=" + nombre + ", telefono=" + telefono + "]";
+		return "Contacto [nombre=" + nombre + ", edad=" + edad + ", telefono=" + telefono +"]";
+	}
+
+	public boolean ContactoConVocal() { 
+		
+		char caracter1 = this.getNombre().charAt(0);//Obtener de nombre la primera posicion
+		char letraMinuscula =  Character.toLowerCase(caracter1); 
+		
+		if (letraMinuscula == 'a' || letraMinuscula == 'e' || letraMinuscula == 'i' || letraMinuscula == 'o' || letraMinuscula == 'u') { //Si inicia con vocal
+			return true;
+		}
+		
+		return false;
 	}
 	
 }

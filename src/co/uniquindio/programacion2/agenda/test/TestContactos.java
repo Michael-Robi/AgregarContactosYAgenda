@@ -12,10 +12,10 @@ public class TestContactos {
 
 	private void inicializarDatos(Agenda agenda) {
 
-			Contacto con = new Contacto("Contacto1","3102313321");
+			Contacto con = new Contacto("Contacto1","3102313321",20);
 			
 			try {
-				agenda.crearContacto(con.getNombre(),con.getTelefono());
+				agenda.crearContacto(con.getNombre(),con.getTelefono(),con.getEdad());
 			} catch (ContactoExcepction e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
