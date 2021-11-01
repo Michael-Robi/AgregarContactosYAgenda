@@ -10,9 +10,9 @@ public class Aplicacion {
 	public static void main(String[] args) {
 		
 		Agenda agenda = new Agenda();
-//		TestData testData = new TestData();
+		TestData testData = new TestData();
 		
-//		mostrarContactos(testData.inicializarDatosPrueba());
+		mostrarContactos(testData.inicializarDatosPrueba());
 		
 		//CRUD
 		//1. Crear contacto

@@ -291,21 +291,6 @@ public class Agenda {
 		return contadorEspacios;
 	}
 	
-	private int ConctactosCreados() {
-		Contacto contacto = null;
-		int contarContacotos = 0;
-		
-		for (int i = 0; i < listContactos.length; i++) {
-			contacto = listContactos[i];
-			
-			if (contacto != null) {
-				contarContacotos++;
-			}
-		}
-		
-		return contarContacotos;
-	}
-
 	/**
 	 * Metodo existeContacto()
 	 * @param telefono
@@ -342,8 +327,32 @@ public class Agenda {
 		}
 		
 	}
+
+//	public void agregarContacto(Contacto c) {
+//		listContactos[numContactos++] = c;
+//	}
+//	
+//	public void mostrarContacto() {
+//		for (int i = 0; i < listContactos.length; i++) {
+//			if (listContactos[i]!=null) {
+//				System.out.println(listContactos[i].toString());
+//			}
+//		}
+//	}
+//	
+	public void agregarGrupo(Grupo g) {
+		listGrupos[numGrupos++] = g;
+	}
+//	
+	public void mostrarGrupo() {
+		for (int i = 0; i < listGrupos.length; i++) {
+			if (listGrupos[i]!=null) {
+				System.out.println(listGrupos[i].toString());
+			}
+		}
+	}
 	
-	/**
+	/** Nuevo Metodo1
 	 * Obtener los grupos que tengan un contacto donde su nombre inicie con vocal
 	 */
 	public void mostrarGruposDeContactoConVocal() {
@@ -411,16 +420,53 @@ public class Agenda {
 		
 		
 	}
-
-	//Desviacion estandar edades contactos
+	
+	/**
+	 * Nuevo Metodo2
+	 * Desviacion estandar edades contactos
+	 * @return
+	 */
 	public double desviacionEstandarEdadesContactos() {
 		
 		Contacto contacto = null;
-		double desviacion = 0;
-		double contadorEdades = 0;
 		double media = 0;
-		double contadorMedia = 0;
+		double primeraParteVarianza = 0;
+		double varianza = 0;
+		double desviacion = 0;
+
+			media = contadorEdades()/ConctactosCreados();
 		
+		for (int i = 0; i < listContactos.length; i++) {
+			contacto = listContactos[i];
+			
+			if (contacto != null) {
+				primeraParteVarianza += Math.pow(listContactos[i].getEdad() - media,2);
+			}
+		}
+		
+			varianza = primeraParteVarianza / ConctactosCreados();
+			desviacion = Math.sqrt(varianza);
+			return desviacion;
+	}
+	
+	private int ConctactosCreados() {
+		Contacto contacto = null;
+		int contarContacotos = 0;
+		
+		for (int i = 0; i < listContactos.length; i++) {
+			contacto = listContactos[i];
+			
+			if (contacto != null) {
+				contarContacotos++;
+			}
+		}
+		
+		return contarContacotos;
+	}
+	
+    private double contadorEdades() {
+    	Contacto contacto = null;
+    	double contadorEdades = 0;
 		for (int i = 0; i < listContactos.length; i++) {
 			contacto = listContactos[i];
 			
@@ -428,43 +474,7 @@ public class Agenda {
 				contadorEdades += listContactos[i].getEdad();
 			}
 		}
-
-			media = contadorEdades/ConctactosCreados();
-		
-		for (int i = 0; i < listContactos.length; i++) {
-			contacto = listContactos[i];
-			
-			if (contacto != null) {
-				contadorMedia += Math.pow(listContactos[i].getEdad() - media,2);
-			}
-		}
-		
-			desviacion = contadorMedia / ConctactosCreados();
-			return desviacion;
-	}
-	
-//	public void agregarContacto(Contacto c) {
-//		listContactos[numContactos++] = c;
-//	}
-//	
-//	public void mostrarContacto() {
-//		for (int i = 0; i < listContactos.length; i++) {
-//			if (listContactos[i]!=null) {
-//				System.out.println(listContactos[i].toString());
-//			}
-//		}
-//	}
-//	
-	public void agregarGrupo(Grupo g) {
-		listGrupos[numGrupos++] = g;
-	}
-//	
-	public void mostrarGrupo() {
-		for (int i = 0; i < listGrupos.length; i++) {
-			if (listGrupos[i]!=null) {
-				System.out.println(listGrupos[i].toString());
-			}
-		}
+		return contadorEdades;
 	}
 
 }

@@ -1,6 +1,6 @@
 package co.uniquindio.programacion2.agenda.aplicacion;
 
-import static co.uniquindio.programacion2.agenda.utilidades.Utilidades.leerStringVentana;
+import static co.uniquindio.programacion2.agenda.utilidades.Utilidades.*;
 import static co.uniquindio.programacion2.agenda.utilidades.Utilidades.mostrarMenu;
 
 import co.uniquindio.programacion2.agenda.model.Agenda;
@@ -22,11 +22,11 @@ public class AplicacionMenu {
 		
 		// Opción seleccionada por el usuario
 		String seleccion = "";
-		
-		
+			
 		// Variables Auxiliares
 		String nombreContracto = "";
 		String telefonoContactoString = "";	
+		int edad = 0;
 		
 		//return 
 		String mensaje = "";
@@ -53,8 +53,10 @@ public class AplicacionMenu {
 				nombreContracto = leerStringVentana("Ingrese el nombre del contacto");
 				// EL usuario ingresa el numero de telefono
 				telefonoContactoString = leerStringVentana("Ingrese el telefono del contacto");
+				// EL usuario ingresa la edad
+				edad = leerEnteroVentana("Ingrese la edad");
 				
-				con = new Contacto(nombreContracto,telefonoContactoString);
+				con = new Contacto(nombreContracto,telefonoContactoString,edad);
 //				agenda.agregarContacto(con);
 				
 				// imprimirMensaje("Nuevo contacto");
@@ -82,4 +84,5 @@ public class AplicacionMenu {
 		} while (seleccion != "Salir");
 		
 	}	
+	
 }

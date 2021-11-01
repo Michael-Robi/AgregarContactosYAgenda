@@ -12,7 +12,7 @@ public class TestGrupo {
 	private void inicializarDatos(Grupo grupo) {
 		
 		for (int i = 0; i <3; i++) {
-		Contacto con = new Contacto("Contacto"+(i+1),"310231332"+i);
+		Contacto con = new Contacto("Contacto"+(i+1),"310231332"+i, 20+i);
 			grupo.crearContacto(con);
 		}
 	}
