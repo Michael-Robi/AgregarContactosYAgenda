@@ -27,28 +27,34 @@ public class TestAplicacion {
 //			}
 //		}
 		
-		//Main metodo 1 Obtener los grupos que tengan un contacto donde su nombre inicie con vocal
-		agenda.mostrarContactos();
-		System.out.println(formateador.format(agenda.desviacionEstandarEdadesContactos()));
-
 		//Main metodo 2 Desviacion estandar edades contactos
+		agenda.mostrarContactos();
+		System.out.println("Desviacion estandar en edades: "+formateador.format(agenda.desviacionEstandarEdadesContactos()));
+
+		//Main metodo 1 Obtener los grupos que tengan un contacto donde su nombre inicie con vocal
 //		Grupo grupo = new Grupo("Grupo A");
 //		Grupo grupo1 = new Grupo("Grupo B");
 //		
 //		for (int i = 0; i <3; i++) {
+//			//Creamos los contacto
 //			Contacto con = new Contacto("Alex"+(i+1),"310231332"+i, 20+i);
 //			Contacto con1 = new Contacto("Andres"+(i+1),"310231332"+i, 20+i);
+//			//Creamos un grupo con contactos
 //			grupo.crearContacto(con);
 //			grupo1.crearContacto(con1);
 //		}
 //		
+//		//agregamos en la agenda los grupos
 //		agenda.agregarGrupo(grupo);
 //		agenda.agregarGrupo(grupo1);
+//		
+//		//mostrar grupos y agenda
 //		agenda.mostrarGrupo();
 //		System.out.println(agenda.toString());
 //		
+//		//Mostrar metodo 1
+//		System.out.println("Grupos que contienen contactos que inician por vocal");
 //		agenda.mostrarGruposDeContactoConVocal();
-		
 		
 	}
 

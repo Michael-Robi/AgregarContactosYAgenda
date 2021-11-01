@@ -340,10 +340,20 @@ public class Agenda {
 //		}
 //	}
 //	
+
+	/**
+	 * Nuevo metodo grupo3 agregarGrupo(Grupo g) 
+	 * @param g
+	 */
 	public void agregarGrupo(Grupo g) {
-		listGrupos[numGrupos++] = g;
+		if (numGrupos<listGrupos.length) {
+			listGrupos[numGrupos++] = g;
+		}
 	}
-//	
+	
+	/**
+	 * Nuevo metodo grupo3 mostrarGrupo()
+	 */
 	public void mostrarGrupo() {
 		for (int i = 0; i < listGrupos.length; i++) {
 			if (listGrupos[i]!=null) {
@@ -352,7 +362,7 @@ public class Agenda {
 		}
 	}
 	
-	/** Nuevo Metodo1
+	/** Nuevo metodo grupo3 Metodo1
 	 * Obtener los grupos que tengan un contacto donde su nombre inicie con vocal
 	 */
 	public void mostrarGruposDeContactoConVocal() {
@@ -422,7 +432,7 @@ public class Agenda {
 	}
 	
 	/**
-	 * Nuevo Metodo2
+	 * Nuevo metodo grupo3 Metodo2
 	 * Desviacion estandar edades contactos
 	 * @return
 	 */

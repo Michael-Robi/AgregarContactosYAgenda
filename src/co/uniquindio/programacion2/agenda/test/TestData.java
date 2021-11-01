@@ -30,11 +30,10 @@ public class TestData {
 				listaContactos[i] = new Contacto(generarNombre(nombres), generarNumeroTel(),inicializarEdadAleatoria());
 			}
 			
-			System.out.println(listaContactos[i].toString());
+//			System.out.println(listaContactos[i].toString());
 			
 			
 		}
-		
 	
 		
 		/*

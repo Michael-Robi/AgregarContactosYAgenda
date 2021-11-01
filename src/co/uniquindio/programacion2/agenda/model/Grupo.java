@@ -22,7 +22,9 @@ public class Grupo {
 	}
 	
 	public void crearContacto(Contacto c) {
-		listContactosAsociados[numContactosAsociado++] = c;
+		if (numContactosAsociado<listContactosAsociados.length) {
+			listContactosAsociados[numContactosAsociado++] = c;
+		}
 	}
 	
 	public void mostrarContactos() {
