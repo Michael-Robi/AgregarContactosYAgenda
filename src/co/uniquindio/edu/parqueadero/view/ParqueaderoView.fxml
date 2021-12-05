@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="565.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.parqueadero.controller.ParqueaderoController">
+   <children>
+      <TabPane layoutY="-1.0" prefHeight="633.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Crud Propietario">
+               <content>
+                  <SplitPane dividerPositions="0.48013245033112584" orientation="VERTICAL" prefHeight="570.0" prefWidth="720.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="756.0">
+                           <children>
+                              <Label layoutX="23.0" layoutY="91.0" text="Nombre:" />
+                              <Label layoutX="23.0" layoutY="54.0" text="Identificación:" />
+                              <Label layoutX="22.0" layoutY="127.0" text="Teléfono:" />
+                              <TextField fx:id="textIdentificacion" layoutX="122.0" layoutY="50.0" prefHeight="25.0" prefWidth="584.0" promptText="Digite Identificación" />
+                              <TextField fx:id="textNombre" layoutX="122.0" layoutY="87.0" prefHeight="25.0" prefWidth="583.0" promptText="Digite Nombre" />
+                              <TextField fx:id="textTelefono" layoutX="122.0" layoutY="123.0" prefHeight="25.0" prefWidth="582.0" promptText="Digite Teléfono" />
+                              <Label layoutX="22.0" layoutY="14.0" text="Detalle Propietario:" />
+                              <Separator layoutX="21.0" layoutY="37.0" prefHeight="3.0" prefWidth="685.0" />
+                              <Button fx:id="btnNuevo" layoutX="122.0" layoutY="234.0" mnemonicParsing="false" onAction="#nuevoEvent" text="Nuevo" />
+                              <Button fx:id="btnAgregar" layoutX="199.0" layoutY="234.0" mnemonicParsing="false" onAction="#agregarEvent" text="Agregar" />
+                              <Button fx:id="btnActualizar" layoutX="284.0" layoutY="234.0" mnemonicParsing="false" onAction="#actualizarEvent" text="Actualizar" />
+                              <Label layoutX="22.0" layoutY="161.0" text="Genero:" />
+                              <ComboBox fx:id="cboGenero" layoutX="124.0" layoutY="157.0" onAction="#eventCboGenero" prefHeight="25.0" prefWidth="313.0" promptText="Seleccione el Genero" />
+                              <Label layoutX="22.0" layoutY="194.0" text="Fecha Nacimiento:" />
+                              <DatePicker fx:id="jcalFechaNacimiento" layoutX="124.0" layoutY="190.0" onAction="#eventJcalFechaNacimiento" prefHeight="25.0" prefWidth="314.0" promptText="DD/MM/AAAA" />
+                              <Button fx:id="btnLimpiar" layoutX="385.0" layoutY="234.0" mnemonicParsing="false" onAction="#eventLimpiar" text="Limpiar" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="279.0" prefWidth="766.0">
+                           <children>
+                              <Label layoutX="22.0" layoutY="14.0" text="Lista de Propietarios:" />
+                              <Separator layoutX="21.0" layoutY="40.0" prefHeight="3.0" prefWidth="690.0" />
+                              <TableView fx:id="tablePropietarios" layoutX="22.0" layoutY="46.0" prefHeight="197.0" prefWidth="690.0">
+                                <columns>
+                                  <TableColumn fx:id="columnIdentificacion" prefWidth="96.0" text="Identificación" />
+                                  <TableColumn fx:id="columnNombre" prefWidth="71.0" text="Nombre" />
+                                    <TableColumn fx:id="columnTelefono" prefWidth="77.0" text="Teléfono" />
+                                    <TableColumn fx:id="columnGenero" prefWidth="75.0" text="Genero" />
+                                    <TableColumn fx:id="columnFechaDeNacimiento" prefWidth="122.0" text="FechaDeNacimiento" />
+                                </columns>
+                              </TableView>
+                              <Button fx:id="btnEliminar" layoutX="349.0" layoutY="251.0" mnemonicParsing="false" onAction="#eliminarEvent" text="Eliminar" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </content></Tab>
+          <Tab text="Crud Vehiculo" />
+            <Tab text="Registro Parqueo">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
